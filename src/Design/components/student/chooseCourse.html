@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose Course</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/bootstrapFiles/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../assets/styles/course.css" />
+    <link rel="stylesheet" href="../../assets/styles/headerStyle.css" />
+    <script>
+      window.addEventListener("load", () => {
+        let courses;
+        let user = localStorage.getItem("userId");
+        fetch(`http://localhost:8080/course/${user}`)
+          .then((response) => response.json())
+          .then((json) => {
+            courses = json;
+            append();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        function append() {
+          let container = document.getElementById("courses");
+          for (let i = 0; i < courses.length; i++) {
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            let indiv = document.createElement("div");
+            let h5 = document.createElement("h5");
+            container.appendChild(div);
+            div.setAttribute("class", "card col-lg-3");
+            div.setAttribute("id", courses[i].Crs_Id);
+            div.appendChild(img);
+            img.setAttribute("src", "../../assets//images/10.jpg");
+            img.setAttribute("class", "card-img-top");
+            div.appendChild(indiv);
+            indiv.setAttribute("class", "card-body");
+            indiv.appendChild(h5);
+            h5.setAttribute("class", "card-title");
+            h5.innerText = `${courses[i].Crs_Name}`;
+            div.addEventListener("click", ExamStart);
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light p-3 sticky-top">
+      <div class="container-fluid">
+        <h2 class="text-white">ITI Exams</h2>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-lg-end"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="#"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Exams</a>
+            </li>
+          </ul>
+          <div class="header_icon">
+            <img src="../../assets/images/4.png" class="d-lg-block d-sm-none" />
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="content">
+      <div class="container">
+        <div class="row">
+          <h4>Select Course To Start Exam</h4>
+        </div>
+        <div class="row courses" id="courses"></div>
+      </div>
+    </section>
+
+    <script src="../../assets/bootstrapFiles/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/bootstrapFiles/popper.min.js"></script>
+    <script src="../../assets/bootstrapFiles/bootstrap.min.js"></script>
+    <script>
+      function ExamStart(e) {
+        localStorage.setItem("crsId", this.id);
+        window.location.href = "./startExam.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../../assets/bootstrapFiles/bootstrap.min.css"
+    />
+    <title>Success</title>
+    <style>
+      div.container {
+        text-align: center;
+        /* border: 1px solid black !important; */
+        margin-top: 150px;
+      }
+      img {
+        width: 400px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1></h1>
+      <img src="../../assets/images/20.gif" />
+    </div>
+
+    <script src="../../assets/bootstrapFiles/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/bootstrapFiles/popper.min.js"></script>
+    <script src="../../assets/bootstrapFiles/bootstrap.min.js"></script>
+    <script>
+      let score = localStorage.getItem("stdScore");
+      document.getElementsByTagName("h1")[0].innerHTML +=
+        "Congratulations! You Passed The Exam, Your Score Is: " + score;
+    </script>
+  </body>
+</html>

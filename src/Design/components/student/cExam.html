@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start Exam</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/bootstrapFiles/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../assets/styles/exam.css" />
+    <link rel="stylesheet" href="../../assets/styles/headerStyle.css" />
+    <style>
+      .hide {
+        display: none;
+      }
+      .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light p-3 sticky-top">
+      <div class="container-fluid">
+        <h2 class="text-white">ITI Exams</h2>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-lg-end"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="#"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="chooseCourse.html"
+                >Courses</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Exams</a>
+            </li>
+          </ul>
+          <div class="header_icon">
+            <img src="../../assets/images/4.png" class="d-lg-block d-sm-none" />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="content">
+      <div class="container">
+        <div class="row">
+          <div id="question" class="col-12"></div>
+
+          <div class="col-8">
+            <input type="radio" id="rad1" name="answers" />
+            <span id="ans1"></span>
+          </div>
+          <div class="col-8">
+            <input type="radio" id="rad2" name="answers" />
+            <span id="ans2"></span>
+          </div>
+          <div class="col-8">
+            <input type="radio" id="rad3" name="answers" />
+            <span id="ans3"></span>
+          </div>
+          <div class="col-8">
+            <input type="radio" id="rad4" name="answers" />
+            <span id="ans4"></span>
+          </div>
+          <div class="col-8">
+            <button id="button" class="btn">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../../assets/bootstrapFiles/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/bootstrapFiles/popper.min.js"></script>
+    <script src="../../assets/bootstrapFiles/bootstrap.min.js"></script>
+    <script src="../../JSFiles/cExam.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+.content{
+    margin-top: 100px;
+}
+.content h4{
+  text-align: center;
+ 
+  margin: auto;
+}
+.content .courses div{   
+    margin: auto;
+    margin-top: 40px;
+   
+}
+.content .courses img{
+    width: 130px;
+    height: 100px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: -45px;    
+}
+.content .courses div{
+    border-color: #baa0eb;
+    transition: 0.5s;   
+}
+.content .courses div:hover{
+    cursor: pointer;
+    border-color: rgb(235, 187, 143);
+    transition: 0.5s;
+    transform: scale(1.1);
+   
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../../assets/bootstrapFiles/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../assets/fontawesome-free-5.15.2-web/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../assets/styles/login.css" />
+    <title>Login</title>
+    <script>
+      window.addEventListener("load", () => {
+        let btn = document.getElementById("loginbtn");
+        btn.addEventListener("click", chooseCours);
+        function chooseCours() {
+          let _username = document.getElementById("usernameinput").value;
+          let _password = document.getElementById("passwordinput").value;
+          fetch("http://localhost:8080/login", {
+            method: "POST",
+            body: JSON.stringify({
+              email: _username,
+              password: _password,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
+            .then((response) => response.json())
+            .then((json) => {
+              if (json.Type == "instructor" || json.Type == "Instructor") {
+                alert(
+                  "Instructor alert: this page is for students examination only"
+                );
+              } else {
+                localStorage.setItem("userId", json.User_Id);
+                window.location.href = `./chooseCourse.html`;
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              alert("enter valid email and password");
+            });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <header class="container-fluid">
+      <h2>Student Login</h2>
+    </header>
+    <section class="content">
+      <div class="container">
+        <div class="img">
+          <img src="../../assets/images/4.png" />
+        </div>
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">
+            <i class="fas fa-user"></i>
+          </span>
+          <input
+            id="usernameinput"
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="addon-wrapping"
+          />
+        </div>
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">
+            <i class="fas fa-lock"></i>
+          </span>
+          <input
+            id="passwordinput"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            aria-label="Username"
+            aria-describedby="addon-wrapping"
+          />
+        </div>
+        <div class="btnLog">
+          <button class="btn" id="loginbtn">Login</button>
+        </div>
+      </div>
+    </section>
+    <script src="../../assets/bootstrapFiles/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/bootstrapFiles/popper.min.js"></script>
+    <script src="../../assets/bootstrapFiles/bootstrap.min.js"></script>
+  </body>
+</html>
